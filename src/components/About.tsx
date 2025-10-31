@@ -5,7 +5,7 @@ const socials = [
   { icon: Mail, label: "Email", href: "mailto:hello@example.com" },
   { icon: Github, label: "Github", href: "https://github.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" }
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
 ];
 
 const About = () => {
@@ -30,36 +30,43 @@ const About = () => {
   }, []);
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       ref={sectionRef}
-      className="min-h-screen flex items-center px-6 md:px-12 py-24"
+      className="min-h-screen flex items-center px-6 md:px-12 py-24 bg-[#f6f6f6]"
     >
       <div className="max-w-3xl mx-auto w-full">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <div
+          className={`transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
           <h2 className="text-sm tracking-widest uppercase mb-16 opacity-60">
             About
           </h2>
-          
+
           <div className="space-y-12">
             <p className="text-3xl md:text-4xl font-light tracking-tight leading-relaxed">
-              I'm a frontend developer specialized in creating minimal, elegant and performant web experiences. I focus on clean code, attention to detail, and user-centric design.
+              I’m a fullstack developer who believes great web experiences come
+              from simplicity, precision, and empathy for the user. I focus on
+              clean code, elegant interfaces, and performance that feels
+              effortless.
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
               <div>
                 <h3 className="text-xs tracking-widest uppercase mb-6 opacity-60">
-                  Expertise
+                  Skills
                 </h3>
                 <ul className="space-y-2 text-sm tracking-wide">
                   <li>React & TypeScript</li>
                   <li>Next.js & Tailwind CSS</li>
-                  <li>NestJS & NodeJS</li>
+                  <li>NestJS & Node.js</li>
                   <li>Responsive design</li>
-                  <li>Performance Optimization</li>
+                  <li>Performance optimization</li>
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="text-xs tracking-widest uppercase mb-6 opacity-60">
                   Contact
