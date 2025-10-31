@@ -46,7 +46,9 @@ const projects = [
 const Projects = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const [visibleImages, setVisibleImages] = useState<number[]>([]);
+  const [showNavigation, setShowNavigation] = useState(true);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const observers = imageRefs.current.map((ref, index) => {
@@ -66,15 +68,41 @@ const Projects = () => {
     return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionBottom = sectionRect.bottom;
+      const windowHeight = window.innerHeight;
+
+      if (sectionBottom < windowHeight * 0.7) {
+        setShowNavigation(false);
+      } else {
+        setShowNavigation(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative min-h-screen pt-32 pb-24 px-6 md:px-12 bg-black text-[#f6f6f6]">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen pt-32 pb-24 px-6 md:px-12 bg-black text-[#f6f6f6]"
+    >
       {/* Sidebar Navigation with mix-blend-mode for auto color inversion */}
       <aside
-        className="hidden md:block fixed left-12 top-32 w-72"
+        className={`hidden md:block fixed left-12 top-32 w-72 transition-opacity duration-500 ${
+          showNavigation ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
         style={{ mixBlendMode: "difference" }}
       >
         <h2 className="text-[10px] tracking-[0.3em] uppercase mb-6 mt-12 text-[#f6f6f6] font-light">
-          PROJECTS 
+          PROJECTS
         </h2>
         <nav className="space-y-0">
           {projects.map((project, index) => (
@@ -202,7 +230,11 @@ const Projects = () => {
         ))}
       </div>
 
-      <div className="hidden xl:block fixed right-12 top-1/2 -translate-y-1/2 text-[10px] tracking-[0.5em] uppercase text-[#f6f6f6] opacity-40 animate-[gentle-bounce_2.5s_ease-in-out_infinite]">
+      <div
+        className={`hidden xl:block fixed right-12 top-1/2 -translate-y-1/2 text-[10px] tracking-[0.5em] uppercase text-[#f6f6f6] transition-opacity duration-500 ${
+          showNavigation ? "opacity-40" : "opacity-0 pointer-events-none"
+        }`}
+      >
         <div
           className="flex flex-col gap-1 items-center"
           style={{ writingMode: "vertical-rl" }}
