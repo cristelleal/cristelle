@@ -2,9 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 
 const socials = [
-  { icon: Mail, label: "Email", href: "mailto:hello@example.com" },
-  { icon: Github, label: "Github", href: "https://github.com" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+  { icon: Mail, label: "Email", href: "mailto:cristelleal@gmail.com" },
+  { icon: Github, label: "Github", href: "https://github.com/cristelleal" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/cristelle-almodar/",
+  },
   { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
 ];
 
@@ -71,18 +75,27 @@ const About = () => {
                   Contact
                 </h3>
                 <div className="space-y-2">
-                  {socials.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm hover:opacity-60 transition-opacity"
-                    >
-                      <social.icon className="w-4 h-4" />
-                      <span>{social.label}</span>
-                    </a>
-                  ))}
+                  {socials.map((social) => {
+                    const displayUrl = social.href.startsWith("mailto:")
+                      ? social.href.replace("mailto:", "")
+                      : social.href
+                          .replace(/^https?:\/\//, "")
+                          .replace(/\/$/, "");
+
+                    return (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm hover:opacity-60 transition-opacity"
+                      >
+                        <social.icon className="w-4 h-4" />
+                        <span>{social.label}</span>
+                        <span className="sr-only">{displayUrl}</span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
