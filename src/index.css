@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -100,7 +96,6 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Text animations */
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -146,7 +141,6 @@ All colors MUST be HSL.
     animation: letter-appear 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  /* Utility classes */
   .text-balance {
     text-wrap: balance;
   }

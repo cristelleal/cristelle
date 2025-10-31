@@ -58,6 +58,7 @@ const Projects = () => {
         },
         { threshold: 0.3 }
       );
+
       if (ref) observer.observe(ref);
       return observer;
     });
@@ -111,20 +112,21 @@ const Projects = () => {
                 : "opacity-0 translate-y-16"
             }`}
           >
-            <div
-              className="relative w-full h-24 overflow-hidden"
+            <a
+              href="#"
+              className={`block overflow-hidden transition-all duration-500 ${
+                activeProject === index ? "scale-[1.02]" : "scale-100"
+              }`}
               onMouseEnter={() => setActiveProject(index)}
               onMouseLeave={() => setActiveProject(null)}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className={`h-full object-cover grayscale transition-all duration-700 ease-out transform mx-auto ${
-                  activeProject === index ? "scale-x-110" : "scale-x-100"
-                }`}
-                loading="lazy"
-              />
-            </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="inline-block h-24 w-[90%] max-w-md object-cover grayscale hover:grayscale-0 transition-all duration-300 mx-auto group-hover:w-[110%]"
+                  loading="lazy"
+                />
+            </a>
           </div>
         ))}
       </div>
