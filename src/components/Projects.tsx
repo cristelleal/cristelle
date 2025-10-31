@@ -1,46 +1,46 @@
 import { useEffect, useRef, useState } from "react";
+import highringImg from "../data/highring-b.webp";
+import rescueQuizImg from "../data/rescue-quiz.png";
+import mealRecipesImg from "../data/meal-recipes.png";
+import extensionImg from "../data/extension.png";
 
 const projects = [
   {
     id: 1,
     number: "001 ",
-    title: " E-COMMERCE PLATFORM",
-    client: " RETAIL CO",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+    title: " HIGHRING PLATFORM",
+    client: " RECRUITMENT AGENCY",
+    image: highringImg,
   },
   {
     id: 2,
     number: "002",
-    title: "AGENCY PORTFOLIO",
-    client: "CREATIVE STUDIO",
-    image:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop",
+    title: "RESCUE QUIZ",
+    client: "PROJECT",
+    image: rescueQuizImg,
   },
   {
     id: 3,
     number: "003",
-    title: "SAAS DASHBOARD",
-    client: "TECH STARTUP",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+    title: "MEAL RECIPES",
+    client: "PROJECT",
+    image: mealRecipesImg,
   },
   {
     id: 4,
     number: "004",
-    title: "BLOG PLATFORM",
-    client: "MEDIA COMPANY",
-    image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop",
+    title: "WEB SUMMARY",
+    client: "CHROME EXTENSION",
+    image: extensionImg,
   },
-  {
-    id: 5,
-    number: "005",
-    title: "MOBILE APP",
-    client: "FITNESS BRAND",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
-  },
+  // {
+  //   id: 5,
+  //   number: "005",
+  //   title: "MOBILE APP",
+  //   client: "FITNESS BRAND",
+  //   image:
+  //     "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
+  // },
 ];
 
 const Projects = () => {
@@ -182,16 +182,18 @@ const Projects = () => {
                     activeProject === index ? "scale-105" : "scale-100"
                   }`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={`h-24 w-[90%] max-w-md mx-auto object-cover transition-all duration-700 ${
-                      activeProject === index
-                        ? "grayscale-0 brightness-100"
-                        : "grayscale brightness-75"
-                    }`}
-                    loading="lazy"
-                  />
+                  <div className="relative">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`h-24 w-[90%] max-w-md mx-auto object-cover transition-all duration-700 brightness-50 ${
+                        activeProject === index ? "grayscale-0" : "grayscale"
+                      }`}
+                      loading="lazy"
+                    />
+                    {/* Overlay noir toujours présent */}
+                    <div className="absolute inset-0 bg-black opacity-40 pointer-events-none" />
+                  </div>
                 </div>
 
                 {/* Overlay */}
