@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import highringImg from "../data/highring-b.webp";
-import rescueQuizImg from "../data/rescue-quiz.png";
-import mealRecipesImg from "../data/meal-recipes.png";
-import extensionImg from "../data/extension.png";
 
 const projects = [
   {
@@ -17,21 +14,21 @@ const projects = [
     number: "002",
     title: "RESCUE QUIZ",
     client: "PROJECT",
-    image: rescueQuizImg,
+    image: "https://images.pexels.com/photos/28271058/pexels-photo-28271058.jpeg",
   },
   {
     id: 3,
     number: "003",
     title: "MEAL RECIPES",
     client: "PROJECT",
-    image: mealRecipesImg,
+    image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg",
   },
   {
     id: 4,
     number: "004",
     title: "WEB SUMMARY",
     client: "CHROME EXTENSION",
-    image: extensionImg,
+    image: "https://images.pexels.com/photos/7439124/pexels-photo-7439124.jpeg",
   },
   // {
   //   id: 5,
@@ -288,10 +285,15 @@ const Projects = () => {
         }`}
       >
         <div
-          className="flex flex-col gap-1 items-center"
+          className="flex flex-col items-center gap-4"
           style={{ writingMode: "vertical-rl" }}
         >
-          SCROLL TO EXPLORE ➢
+          <div>
+            SCROLL TO EXPLORE 
+            <span className="inline-block animate-bounce ml-6" aria-hidden>
+              ➢
+            </span>
+          </div>
         </div>
       </div>
     </section>
