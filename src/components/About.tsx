@@ -53,7 +53,7 @@ const About = () => {
               effortless.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-border">
+            <div className="grid grid-cols-2 pt-8 border-t border-border">
               <div>
                 <h3 className="text-xs tracking-widest uppercase mb-6 opacity-60">
                   Skills
@@ -62,8 +62,7 @@ const About = () => {
                   <li>React & TypeScript</li>
                   <li>Next.js & Tailwind CSS</li>
                   <li>NestJS & Node.js</li>
-                  <li>Responsive design</li>
-                  <li>Performance optimization</li>
+                  <li>PostgreSQL & REST APIs</li>
                 </ul>
               </div>
 

@@ -101,7 +101,7 @@ const Projects = () => {
         }`}
         style={{ mixBlendMode: "difference" }}
       >
-        <h2 className="text-[10px] tracking-[0.3em] uppercase mb-6 mt-12 text-[#f6f6f6] font-light">
+        <h2 className="text-[10px] tracking-[0.3em] uppercase mb-6 mt-12 text-[#f6f6f6] font-bold">
           PROJECTS
         </h2>
         <nav className="space-y-0">
@@ -119,7 +119,7 @@ const Projects = () => {
             >
               <div className="flex items-baseline gap-4">
                 <span
-                  className={`text-2xl font-light tracking-wider transition-all duration-500 ${
+                  className={`text-2xl font-medium tracking-wider transition-all duration-500 ${
                     activeProject === index ? "scale-110" : ""
                   }`}
                 >
@@ -127,7 +127,7 @@ const Projects = () => {
                 </span>
                 <div className="flex-1">
                   <span
-                    className={`block text-sm tracking-[0.15em] uppercase font-light transition-all duration-500 ${
+                    className={`block text-sm tracking-[0.15em] uppercase font-medium transition-all duration-500 ${
                       activeProject === index ? "translate-x-2" : ""
                     }`}
                   >
@@ -162,7 +162,7 @@ const Projects = () => {
             >
               {/* Mobile number display */}
               <div className="md:hidden flex items-center gap-3 mb-3">
-                <span className="text-xl font-light tracking-wider text-gray-400">
+                <span className="text-xl font-medium tracking-wider text-gray-400">
                   {project.number}
                 </span>
                 <div>
@@ -201,23 +201,73 @@ const Projects = () => {
                   }`}
                 />
 
-                {/* Hover Info */}
+                {/* Minimalist Circle with Arrow */}
                 <div
-                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
-                    activeProject === index ? "opacity-100" : "opacity-0"
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
+                    activeProject === index
+                      ? "opacity-100 scale-100"
+                      : "opacity-0 scale-90"
                   }`}
                 >
-                  <div className="text-center">
-                    <span className="inline-block px-6 py-2 border border-[#f6f6f6] text-[#f6f6f6] text-[10px] tracking-[0.3em] uppercase hover:bg-[#f2f2f2] hover:text-black transition-colors duration-300">
-                      VIEW PROJECT
-                    </span>
+                  {/* SVG Circle that draws itself */}
+                  <div className="relative w-20 h-20">
+                    <svg
+                      className="absolute inset-0 -rotate-90"
+                      viewBox="0 0 80 80"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="40"
+                        cy="40"
+                        r="38"
+                        stroke="currentColor"
+                        strokeWidth="0.5"
+                        className={`transition-all duration-1000 text-[#f6f6f6] ${
+                          activeProject === index ? "opacity-30" : "opacity-0"
+                        }`}
+                        style={{
+                          strokeDasharray: "240",
+                          strokeDashoffset:
+                            activeProject === index ? "0" : "240",
+                          transition:
+                            "stroke-dashoffset 1s ease-in-out, opacity 0.3s",
+                        }}
+                      />
+                    </svg>
+
+                    {/* Arrow in center */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div
+                        className={`transition-all duration-500 delay-300 ${
+                          activeProject === index
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-2"
+                        }`}
+                      >
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="transition-transform duration-300 group-hover:translate-x-1 text-[#f6f6f6]"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Project Number Overlay (large) */}
               <div
-                className={`hidden md:block absolute -top-8 -left-8 text-[120px] font-light leading-none transition-all duration-700 pointer-events-none text-[#f6f6f6] ${
+                className={`hidden md:block absolute -top-8 -left-8 text-[120px] font-medium leading-none transition-all duration-700 pointer-events-none text-[#f6f6f6] ${
                   activeProject === index
                     ? "opacity-20 scale-100"
                     : "opacity-0 scale-90"
