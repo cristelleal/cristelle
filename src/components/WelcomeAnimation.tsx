@@ -41,7 +41,7 @@ const WelcomeAnimation = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-50 bg-[#f6f6f6] md:bg-black flex items-center justify-center transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
         isExiting
           ? "opacity-0 scale-110 blur-md"
           : "opacity-100 scale-100 blur-0"
@@ -63,7 +63,7 @@ const WelcomeAnimation = ({ onComplete }: { onComplete: () => void }) => {
               cy="60"
               r="54"
               fill="none"
-              stroke="#f6f6f6"
+              className="stroke-black md:stroke-[#f6f6f6]"
               strokeWidth="1"
               strokeDasharray={339}
               strokeDashoffset={339 - (339 * progress) / 100}
@@ -71,11 +71,11 @@ const WelcomeAnimation = ({ onComplete }: { onComplete: () => void }) => {
 
             />
           </svg>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-extralight text-[#f6f6f6] tracking-[0.18em] select-none">
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-extralight text-black md:text-[#f6f6f6] tracking-[0.18em] select-none">
             {progress}
           </span>
         </div>
-        <p className="text-xs font-light tracking-[0.3em] text-white/40 uppercase mt-2 select-none">
+        <p className="text-xs font-light tracking-[0.3em] text-black/40 md:text-white/40 uppercase mt-2 select-none">
           Welcome
         </p>
       </div>

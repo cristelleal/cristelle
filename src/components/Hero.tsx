@@ -7,7 +7,7 @@ const Hero = () => {
         <img
           src={CA}
           alt="CA logo"
-          className="inline-block w-40 h-40 -mt-14 -ml-8"
+          className="inline-block w-40 h-40 -mt-20 md:-mt-14 -ml-8"
         />
       </div>
     </header>
