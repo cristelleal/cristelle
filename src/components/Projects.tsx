@@ -9,7 +9,7 @@ const projects = [
     title: "HIGHRING PLATFORM",
     client: "RECRUITMENT AGENCY",
     image: highringImg,
-    color: "#C4B5A0", // Beige
+    color: "#C4B5A0",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const projects = [
     client: "PROJECT",
     image:
       "https://images.pexels.com/photos/28271058/pexels-photo-28271058.jpeg",
-    color: "#7B9FAD", // Bleu
+    color: "#7B9FAD",
   },
   {
     id: 3,
@@ -139,7 +139,7 @@ const Projects = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-col w-full md:max-w-2xl md:mx-auto space-y-0 md:space-y-2 md:ml-96 md:mt-32">
+      <div className="flex flex-col w-full md:max-w-2xl md:mx-auto space-y-0 md:space-y-2 md:ml-96 md:mt-32 px-4 md:px-0">
         {projects.map((project, index) => (
           <div
             key={project.id}
