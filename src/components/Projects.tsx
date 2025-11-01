@@ -1,3 +1,4 @@
+import { ArrowDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import highringImg from "../data/highring-b.webp";
 
@@ -213,7 +214,7 @@ const Projects = () => {
                         cy="40"
                         r="38"
                         stroke="currentColor"
-                        strokeWidth="0.5"
+                        strokeWidth="1"
                         className={`text-[#f6f6f6] transition-[stroke-dashoffset,opacity] duration-1000 ease-in-out [stroke-dasharray:240] ${
                           activeProject === index
                             ? "[stroke-dashoffset:0] opacity-30"
@@ -223,28 +224,17 @@ const Projects = () => {
                     </svg>
 
                     {/* Arrow in center */}
-                    <div className="absolute inset-0 flex items-center justify-center -translate-x-1">
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <div
                         className={`transition-all duration-500 delay-300 ${
                           activeProject === index
-                            ? "opacity-100 translate-x-0"
-                            : "opacity-0 -translate-x-2"
+                            ? "opacity-100 scale-100"
+                            : "opacity-0 scale-90"
                         }`}
                       >
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="transition-transform duration-300 group-hover:translate-x-1 text-[#f6f6f6]"
-                        >
-                          <line x1="5" y1="12" x2="19" y2="12" />
-                          <polyline points="12 5 19 12 12 19" />
-                        </svg>
+                        <span className="text-[#f6f6f6] text-xs leading-none flex items-center justify-center">
+                          ⊹
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -276,9 +266,9 @@ const Projects = () => {
           style={{ writingMode: "vertical-rl" }}
         >
           <div>
-            SCROLL TO EXPLORE 
-            <span className="inline-block animate-bounce ml-6" aria-hidden>
-              ➢
+            SCROLL TO EXPLORE
+            <span className="inline-block animate-bounce m-3" aria-hidden>
+              <ArrowDown size={10} absoluteStrokeWidth />
             </span>
           </div>
         </div>

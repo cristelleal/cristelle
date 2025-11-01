@@ -68,6 +68,7 @@ const WelcomeAnimation = ({ onComplete }: { onComplete: () => void }) => {
               strokeDasharray={339}
               strokeDashoffset={339 - (339 * progress) / 100}
               strokeLinecap="round"
+
             />
           </svg>
           <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-extralight text-[#f6f6f6] tracking-[0.18em] select-none">
