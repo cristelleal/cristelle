@@ -9,9 +9,13 @@ const Index = () => {
       <Hero />
       <main>
         <Projects />
-        <About />
+        <div className="hidden md:block">
+          <About />
+        </div>
       </main>
-      <Contact />
+      <div className="hidden md:block">
+        <Contact />
+      </div>
     </div>
   );
 };

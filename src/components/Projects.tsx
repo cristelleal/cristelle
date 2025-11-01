@@ -159,7 +159,7 @@ const Projects = () => {
               }
             >
               {/* Mobile Header */}
-              <div className="md:hidden px-4 sm:px-6 mb-1.5">
+              <div className="md:hidden mb-1.5">
                 <div className="flex items-center gap-2">
                   {/* Carré de couleur - plus petit */}
                   <div
