@@ -9,7 +9,6 @@ const socials = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/cristelle-almodar/",
   },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
 ];
 
 const About = () => {

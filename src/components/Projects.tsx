@@ -30,14 +30,6 @@ const projects = [
     client: "CHROME EXTENSION",
     image: "https://images.pexels.com/photos/7439124/pexels-photo-7439124.jpeg",
   },
-  // {
-  //   id: 5,
-  //   number: "005",
-  //   title: "MOBILE APP",
-  //   client: "FITNESS BRAND",
-  //   image:
-  //     "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
-  // },
 ];
 
 const Projects = () => {
@@ -222,21 +214,16 @@ const Projects = () => {
                         r="38"
                         stroke="currentColor"
                         strokeWidth="0.5"
-                        className={`transition-all duration-1000 text-[#f6f6f6] ${
-                          activeProject === index ? "opacity-30" : "opacity-0"
+                        className={`text-[#f6f6f6] transition-[stroke-dashoffset,opacity] duration-1000 ease-in-out [stroke-dasharray:240] ${
+                          activeProject === index
+                            ? "[stroke-dashoffset:0] opacity-30"
+                            : "[stroke-dashoffset:240] opacity-0"
                         }`}
-                        style={{
-                          strokeDasharray: "240",
-                          strokeDashoffset:
-                            activeProject === index ? "0" : "240",
-                          transition:
-                            "stroke-dashoffset 1s ease-in-out, opacity 0.3s",
-                        }}
                       />
                     </svg>
 
                     {/* Arrow in center */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center -translate-x-1">
                       <div
                         className={`transition-all duration-500 delay-300 ${
                           activeProject === index
