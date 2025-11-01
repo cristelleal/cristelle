@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { GithubIcon } from "@/components/icons/GithubIcon";
+import { LinkedinIcon } from "@/components/icons/LinkedinIcon";
+import { MailIcon } from "@/components/icons/MailIcon";
+import { TwitterIcon } from "./icons/Twitter";
 
 const socials = [
-  { icon: Mail, label: "Email", href: "mailto:cristelleal@gmail.com" },
-  { icon: Github, label: "Github", href: "https://github.com/cristelleal" },
+  { icon: MailIcon, label: "Email", href: "mailto:cristelleal@gmail.com" },
+  { icon: GithubIcon, label: "Github", href: "https://github.com/cristelleal" },
   {
-    icon: Linkedin,
+    icon: LinkedinIcon,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/cristelle-almodar/",
   },
+  { icon: TwitterIcon, label: "Twitter", href: "https://twitter.com/" },
 ];
 
 const About = () => {

@@ -15,7 +15,8 @@ const projects = [
     number: "002",
     title: "RESCUE QUIZ",
     client: "PROJECT",
-    image: "https://images.pexels.com/photos/28271058/pexels-photo-28271058.jpeg",
+    image:
+      "https://images.pexels.com/photos/28271058/pexels-photo-28271058.jpeg",
   },
   {
     id: 3,
@@ -94,7 +95,7 @@ const Projects = () => {
         <h2 className="text-[10px] tracking-[0.3em] uppercase mb-6 mt-12 text-[#f6f6f6] font-bold">
           PROJECTS
         </h2>
-        <nav className="space-y-0">
+        <nav className="-space-y-0">
           {projects.map((project, index) => (
             <button
               key={project.id}
@@ -268,7 +269,7 @@ const Projects = () => {
           <div>
             SCROLL TO EXPLORE
             <span className="inline-block animate-bounce m-3" aria-hidden>
-              <ArrowDown size={10} absoluteStrokeWidth />
+              <ArrowDown size={12} />
             </span>
           </div>
         </div>
