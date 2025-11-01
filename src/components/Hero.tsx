@@ -15,7 +15,7 @@ const Hero = () => {
         />
         <Link
           to={isAboutPage ? "/" : "/about"}
-          className="md:hidden text-xs tracking-[0.3em] uppercase opacity-50 hover:opacity-100 transition-all duration-300 mt-1 mr-4 font-semibold"
+          className="md:hidden text-xs tracking-[0.3em] uppercase opacity-50 hover:opacity-65 transition-all duration-300 mt-1 mr-4 font-semibold"
         >
           {isAboutPage ? "Home" : "About"}
         </Link>
