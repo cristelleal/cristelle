@@ -56,7 +56,7 @@ const About = () => {
       >
         {/* Header */}
         <div className="mb-12">
-          <h2 className="font-mono text-xs tracking-wider text-neutral-400">~/about</h2>
+          <h2 className="hidden md:block font-mono text-xs tracking-wider text-neutral-400">~/about</h2>
         </div>
 
         {/* Main Content */}
@@ -70,7 +70,7 @@ const About = () => {
           </p>
 
           {/* Info Grid */}
-          <div className="grid md:grid-cols-2 gap-12 pt-8 border-t border-neutral-200">
+          <div className="grid grid-cols-2 gap-8 md:gap-56 lg:gap-64 pt-8 border-t border-neutral-200">
             {/* Skills */}
             <div>
               <h3 className="font-mono text-xs tracking-wider mb-4 text-neutral-500">

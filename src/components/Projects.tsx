@@ -52,7 +52,7 @@ const Projects = () => {
         <div className="mb-8">
           <div className="flex items-baseline justify-between pb-3">
             <div className="flex items-center gap-3">
-              <h2 className="font-mono text-xs tracking-wider text-neutral-400">~/work</h2>
+              <h2 className="hidden md:block font-mono text-xs tracking-wider text-neutral-400">~/work</h2>
             </div>
             <span className="font-mono text-xs text-neutral-400">
               {String(projects.length).padStart(2, "0")}
