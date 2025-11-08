@@ -47,12 +47,12 @@ const Projects = () => {
       ref={sectionRef}
       className="min-h-screen bg-neutral-50 text-neutral-900 flex items-center justify-center px-6 py-12"
     >
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-3xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-baseline justify-between pb-3">
             <div className="flex items-center gap-3">
-              <h2 className="font-mono text-xs tracking-wider text-neutral-400"></h2>
+              <h2 className="font-mono text-xs tracking-wider text-neutral-400">~/work</h2>
             </div>
             <span className="font-mono text-xs text-neutral-400">
               {String(projects.length).padStart(2, "0")}
@@ -81,16 +81,11 @@ const Projects = () => {
                   </div>
 
                   {/* Title & Type */}
-                  <div className="col-span-6 lg:col-span-7">
+                  <div className="col-span-5 lg:col-span-7">
                     <div className="flex flex-col gap-0.5">
-                      <div className="flex items-baseline gap-3">
-                        <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
-                          {project.title}
-                        </h3>
-                        <span className="text-xs text-neutral-400 font-mono ml-auto">
-                          {project.year}
-                        </span>
-                      </div>
+                      <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
+                        {project.title}
+                      </h3>
                       <span className="text-xs text-neutral-400 font-mono">
                         {project.type}
                       </span>
@@ -98,7 +93,7 @@ const Projects = () => {
                   </div>
 
                   {/* Image - Compact */}
-                  <div className="col-span-5 lg:col-span-4">
+                  <div className="col-span-6 lg:col-span-4">
                     <div className="relative h-20 overflow-hidden bg-neutral-100">
                       <img
                         src={project.image}
