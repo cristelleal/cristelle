@@ -47,7 +47,7 @@ const Projects = () => {
       ref={sectionRef}
       className="min-h-screen bg-neutral-50 text-neutral-900 flex items-center justify-center px-6 py-12"
     >
-      <div className="w-full max-w-5xl">
+      <div className="w-full max-w-4xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-baseline justify-between pb-3">
@@ -82,15 +82,17 @@ const Projects = () => {
 
                   {/* Title & Type */}
                   <div className="col-span-6 lg:col-span-7">
-                    <div className="flex items-baseline gap-3">
-                      <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
-                        {project.title}
-                      </h3>
-                      <span className="text-xs text-neutral-400 font-mono hidden lg:inline">
+                    <div className="flex flex-col gap-0.5">
+                      <div className="flex items-baseline gap-3">
+                        <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
+                          {project.title}
+                        </h3>
+                        <span className="text-xs text-neutral-400 font-mono ml-auto">
+                          {project.year}
+                        </span>
+                      </div>
+                      <span className="text-xs text-neutral-400 font-mono">
                         {project.type}
-                      </span>
-                      <span className="text-xs text-neutral-400 font-mono ml-auto">
-                        {project.year}
                       </span>
                     </div>
                   </div>
