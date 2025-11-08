@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { ArrowDown } from "lucide-react";
 import highringImg from "../data/highring-b.webp";
 
 const projects = [
@@ -80,7 +81,7 @@ const Projects = () => {
                   </div>
 
                   {/* Title & Type */}
-                  <div className="col-span-7 lg:col-span-8">
+                  <div className="col-span-6 lg:col-span-7">
                     <div className="flex items-baseline gap-3">
                       <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
                         {project.title}
@@ -95,7 +96,7 @@ const Projects = () => {
                   </div>
 
                   {/* Image - Compact */}
-                  <div className="col-span-4 lg:col-span-3">
+                  <div className="col-span-5 lg:col-span-4">
                     <div className="relative h-20 overflow-hidden bg-neutral-100">
                       <img
                         src={project.image}
@@ -164,6 +165,25 @@ const Projects = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Scroll Indicator - Desktop only */}
+        <div className="hidden lg:flex justify-center mt-12">
+          <div className="animate-bounce text-neutral-400/60">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 6 L10 11 L15 6" />
+              <path d="M5 10 L10 15 L15 10" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>
