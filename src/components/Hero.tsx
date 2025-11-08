@@ -23,7 +23,7 @@ const Hero = () => {
           {/* Hamburger Menu - Mobile Only */}
           <button
             onClick={toggleMenu}
-            className="md:hidden mt-1 mr-4 w-8 h-8 flex flex-col justify-center items-center gap-1.5 group"
+            className="md:hidden mr-4 w-8 flex flex-col justify-center items-center gap-1.5 group"
             aria-label="Toggle menu"
           >
             <span
