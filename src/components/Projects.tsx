@@ -1,320 +1,169 @@
-import { ArrowDown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import highringImg from "../data/highring-b.webp";
 
 const projects = [
   {
     id: 1,
-    number: "001",
-    title: "HIGHRING PLATFORM",
-    client: "RECRUITMENT AGENCY",
+    number: "01",
+    title: "Highring Platform",
+    type: "Recruitment SaaS",
+    year: "2024",
     image: highringImg,
-    color: "#C4B5A0",
   },
   {
     id: 2,
-    number: "002",
-    title: "RESCUE QUIZ",
-    client: "PROJECT",
+    number: "02",
+    title: "Rescue Quiz",
+    type: "Educational App",
+    year: "2024",
     image:
       "https://images.pexels.com/photos/28271058/pexels-photo-28271058.jpeg",
-    color: "#7B9FAD",
   },
   {
     id: 3,
-    number: "003",
-    title: "MEAL RECIPES",
-    client: "PROJECT",
+    number: "03",
+    title: "Meal Recipes",
+    type: "Content Platform",
+    year: "2023",
     image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg",
-    color: "#8B9BA3", // Gris-bleu
   },
   {
     id: 4,
-    number: "004",
-    title: "WEB SUMMARY",
-    client: "CHROME EXTENSION",
+    number: "04",
+    title: "Web Summary",
+    type: "Browser Extension",
+    year: "2023",
     image: "https://images.pexels.com/photos/7439124/pexels-photo-7439124.jpeg",
-    color: "#6B5D56", // Marron
   },
 ];
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
-  const [visibleImages, setVisibleImages] = useState<number[]>([]);
-  const [showNavigation, setShowNavigation] = useState(true);
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const observers = imageRefs.current.map((ref, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleImages((prev) => [...new Set([...prev, index])]);
-          }
-        },
-        { threshold: 0.3 }
-      );
-
-      if (ref) observer.observe(ref);
-      return observer;
-    });
-
-    return () => observers.forEach((observer) => observer.disconnect());
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const sectionBottom = sectionRect.bottom;
-      const windowHeight = window.innerHeight;
-
-      if (sectionBottom < windowHeight * 0.7) {
-        setShowNavigation(false);
-      } else {
-        setShowNavigation(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen h-full pt-28 md:pt-32 pb-16 md:pb-24 px-0 md:px-12 bg-[#f6f6f6] md:bg-black text-black md:text-[#f6f6f6] overflow-hidden"
+      className="min-h-screen bg-neutral-50 text-neutral-900 flex items-center justify-center px-6 py-12"
     >
-      {/* Sidebar Navigation Desktop */}
-      <aside
-        className={`hidden md:block fixed left-12 top-32 w-72 transition-opacity duration-500 ${
-          showNavigation ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        style={{ mixBlendMode: "difference" }}
-      >
-        <h2 className="text-[10px] tracking-[0.3em] uppercase mb-6 mt-14 text-[#f6f6f6] font-bold">
-          PROJECTS
-        </h2>
-        <nav className="-space-y-0">
-          {projects.map((project, index) => (
-            <button
-              key={project.id}
-              onClick={() => setActiveProject(index)}
-              onMouseEnter={() => setActiveProject(index)}
-              onMouseLeave={() => setActiveProject(null)}
-              className={`group text-left w-full transition-all duration-500 text-[#f6f6f6] ${
-                activeProject === index
-                  ? "opacity-100"
-                  : "opacity-50 hover:opacity-100"
-              }`}
-            >
-              <div className="flex items-baseline gap-4">
-                <span
-                  className={`text-2xl font-medium tracking-wider transition-all duration-500 ${
-                    activeProject === index ? "scale-110" : ""
-                  }`}
-                >
-                  {project.number}
-                </span>
-                <div className="flex-1">
-                  <span
-                    className={`block text-sm tracking-[0.15em] uppercase font-medium transition-all duration-500 ${
-                      activeProject === index ? "translate-x-2" : ""
-                    }`}
-                  >
-                    {project.title}
-                  </span>
-                  <span className="block text-[10px] tracking-[0.2em] uppercase opacity-70 mt-1">
-                    {project.client}
-                  </span>
-                </div>
-              </div>
-            </button>
-          ))}
-        </nav>
-      </aside>
+      <div className="w-full max-w-5xl">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-baseline justify-between pb-3">
+            <div className="flex items-center gap-3">
+              <h2 className="font-mono text-xs tracking-wider text-neutral-400"></h2>
+            </div>
+            <span className="font-mono text-xs text-neutral-400">
+              {String(projects.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
 
-      {/* Main Content */}
-      <div className="flex flex-col w-full md:max-w-2xl md:mx-auto space-y-0 md:space-y-2 md:ml-96 md:mt-32 px-4 md:px-0">
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            ref={(el) => (imageRefs.current[index] = el)}
-            className={`transition-all duration-1000 w-full ${
-              visibleImages.includes(index)
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-16"
-            }`}
-          >
-            <div
-              className="relative group cursor-pointer"
-              onMouseEnter={() => setActiveProject(index)}
-              onMouseLeave={() => setActiveProject(null)}
-              onClick={() =>
-                setActiveProject(activeProject === index ? null : index)
-              }
-            >
-              {/* Mobile Header */}
-              <div className="md:hidden mb-1.5">
-                <div className="flex items-center gap-2">
-                  {/* Carré de couleur - plus petit */}
-                  <div
-                    className="w-4 h-4 flex-shrink-0"
-                    style={{ backgroundColor: project.color }}
-                  />
-
-                  {/* Numéro - plus petit */}
-                  <span className="text-base font-light tracking-wide text-gray-600">
-                    {project.number}
-                  </span>
-
-                  {/* Ligne horizontale - plus fine */}
-                  <div className="flex-1 h-[0.5px] bg-gray-300" />
-
-                  {/* Titre - plus petit et compact */}
-                  <h3 className="text-[11px] font-medium tracking-tight uppercase text-black whitespace-nowrap">
-                    {project.title}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Image Container */}
-              <div className="relative overflow-hidden">
-                <div
-                  className={`transition-all duration-700 ease-out ${
-                    activeProject === index ? "scale-105" : "scale-100"
-                  }`}
-                >
-                  <div className="relative">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className={`w-full md:h-24 md:w-[90%] md:max-w-md md:mx-auto object-cover transition-all duration-700 
-                        ${
-                          activeProject === index
-                            ? "grayscale-0 brightness-100"
-                            : "grayscale brightness-75"
-                        }
-                        h-24 sm:h-28`}
-                      loading="lazy"
-                    />
-                    {/* Dark overlay */}
-                    <div className="absolute inset-0 bg-black opacity-20 md:opacity-40 pointer-events-none" />
+        {/* Projects List - Compact */}
+        <div className="space-y-3">
+          {projects.map((project, index) => {
+            const isActive = activeIndex === index;
+            
+            return (
+              <div
+                key={project.id}
+                className="group cursor-pointer"
+                onMouseEnter={() => setActiveIndex(index)}
+                onMouseLeave={() => setActiveIndex(null)}
+              >
+                <div className="grid grid-cols-12 gap-4 items-center">
+                  {/* Number */}
+                  <div className="col-span-1">
+                    <span className="font-mono text-xs text-neutral-400 group-hover:text-neutral-900 transition-colors">
+                      {project.number}
+                    </span>
                   </div>
-                </div>
 
-                {/* Hover Overlay - Desktop only */}
-                <div
-                  className={`hidden md:block absolute inset-0 bg-black transition-opacity duration-700 ${
-                    activeProject === index ? "opacity-0" : "opacity-20"
-                  }`}
-                />
+                  {/* Title & Type */}
+                  <div className="col-span-7 lg:col-span-8">
+                    <div className="flex items-baseline gap-3">
+                      <h3 className="text-base lg:text-lg font-light tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
+                        {project.title}
+                      </h3>
+                      <span className="text-xs text-neutral-400 font-mono hidden lg:inline">
+                        {project.type}
+                      </span>
+                      <span className="text-xs text-neutral-400 font-mono ml-auto">
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
 
-                {/* Circle with Arrow - Desktop only */}
-                <div
-                  className={`hidden md:flex absolute inset-0 items-center justify-center transition-all duration-700 ${
-                    activeProject === index
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-90"
-                  }`}
-                >
-                  <div className="relative w-20 h-20">
-                    <svg
-                      className="absolute inset-0 -rotate-90"
-                      viewBox="0 0 80 80"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="40"
-                        cy="40"
-                        r="38"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        className={`text-[#f6f6f6] transition-[stroke-dashoffset,opacity] duration-1000 ease-in-out [stroke-dasharray:240] ${
-                          activeProject === index
-                            ? "[stroke-dashoffset:0] opacity-30"
-                            : "[stroke-dashoffset:240] opacity-0"
+                  {/* Image - Compact */}
+                  <div className="col-span-4 lg:col-span-3">
+                    <div className="relative h-20 overflow-hidden bg-neutral-100">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className={`w-full h-full object-cover transition-all duration-500 ${
+                          isActive ? "grayscale-0 scale-105" : "grayscale scale-100"
+                        }`}
+                        loading="lazy"
+                      />
+
+                      {/* Overlay */}
+                      <div
+                        className={`absolute inset-0 bg-neutral-900 transition-opacity duration-500 ${
+                          isActive ? "opacity-20" : "opacity-30"
                         }`}
                       />
-                    </svg>
 
-                    {/* Arrow in center */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className={`transition-all duration-500 delay-300 ${
-                          activeProject === index
-                            ? "opacity-100 scale-100"
-                            : "opacity-0 scale-90"
-                        }`}
-                      >
-                        <span className="text-[#f6f6f6] text-xs leading-none flex items-center justify-center">
-                          ⊹
-                        </span>
+                      {/* Hover Circle Effect */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="relative w-12 h-12">
+                          {/* Background circle for better contrast */}
+                          <div
+                            className={`absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm transition-opacity duration-300 ${
+                              isActive ? "opacity-100" : "opacity-0"
+                            }`}
+                          />
+
+                          {/* SVG Circle with animation */}
+                          <div
+                            className={`absolute inset-0 transition-all duration-300 ${
+                              isActive ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                            }`}
+                          >
+                            <svg
+                              className="absolute inset-0 -rotate-90"
+                              viewBox="0 0 48 48"
+                              fill="none"
+                            >
+                              <circle
+                                cx="24"
+                                cy="24"
+                                r="22"
+                                stroke="white"
+                                strokeWidth="0.75"
+                                strokeDasharray="138"
+                                strokeDashoffset={isActive ? 0 : 138}
+                                className="opacity-70 transition-[stroke-dashoffset] duration-700 ease-out"
+                              />
+                            </svg>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-white text-sm font-light tracking-wider">
+                                ⊹
+                              </span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Separator */}
+                {index < projects.length - 1 && (
+                  <div className="h-px bg-neutral-200 mt-3" />
+                )}
               </div>
-
-              {/* Project Number Overlay - Desktop only */}
-              <div
-                className={`hidden md:block absolute -top-8 -left-8 text-[120px] font-medium leading-none transition-all duration-700 pointer-events-none text-[#f6f6f6] ${
-                  activeProject === index
-                    ? "opacity-20 scale-100"
-                    : "opacity-0 scale-90"
-                }`}
-              >
-                {project.number}
-              </div>
-            </div>
-
-            {/* Espacement entre les projets - Mobile only */}
-            {index < projects.length - 1 && (
-              <div className="md:hidden h-6 sm:h-8" />
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Scroll Indicator - Desktop */}
-      <div
-        className={`hidden xl:block fixed right-12 top-1/2 -translate-y-1/2 text-[10px] tracking-[0.5em] uppercase text-[#f6f6f6] transition-opacity duration-500 ${
-          showNavigation ? "opacity-40" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div
-          className="flex flex-col items-center gap-4"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          <div>
-            SCROLL TO EXPLORE
-            <span className="inline-block animate-bounce m-3" aria-hidden>
-              <ArrowDown size={12} />
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Scroll Indicator */}
-      <div
-        className={`md:hidden fixed bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500 ${
-          showNavigation && visibleImages.length < projects.length
-            ? "opacity-40"
-            : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-[9px] tracking-[0.4em] uppercase text-black">
-            SCROLL
-          </span>
-          <div className="animate-bounce">
-            <ArrowDown size={14} className="text-black" />
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
