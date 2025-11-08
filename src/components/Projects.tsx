@@ -121,7 +121,7 @@ const Projects = () => {
                         <div className="relative w-12 h-12">
                           {/* Background circle for better contrast */}
                           <div
-                            className={`absolute inset-0 rounded-full bg-white/5 backdrop-blur-sm transition-opacity duration-300 ${
+                            className={`absolute inset-0 rounded-full bg-white/5 backdrop-blur-[2px] transition-opacity duration-300 ${
                               isActive ? "opacity-100" : "opacity-0"
                             }`}
                           />
